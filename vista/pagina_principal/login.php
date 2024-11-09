@@ -3,7 +3,7 @@
 
 <div class="container w-50 mx-auto">
     <h1>Iniciar Sesión</h1>
-    <form action="login_process.php" method="POST">
+    <form action="../controlador/ctlLogin.php" method="POST">
         <div class="form-group">
             <label for="username">Nombre de Usuario:</label>
             <input type="text" class="form-control" id="username" name="username" required>
