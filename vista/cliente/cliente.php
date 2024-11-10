@@ -11,7 +11,13 @@
     </head>
     <body>
         <?php
+        // Iniciar sesión (si aún no está iniciada)
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
         include './cliente-navbar.php';
+        echo '<h1>Bienvenido cliente con id: '.$_SESSION['id_usuario'].'</h1>';
         ?>
     </body>
 </html>

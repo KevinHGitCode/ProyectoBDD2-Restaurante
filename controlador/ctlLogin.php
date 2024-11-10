@@ -36,11 +36,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // contrasena123
         // Verifica que la contraseña coincide
         if ($password == $row['contrasena']) { 
+
+            // Iniciar sesión (si aún no está iniciada)
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
             $_SESSION['id_usuario'] = $row['id_usuario'];
             $_SESSION['id_rol'] = $row['id_rol'];
             $_SESSION['nombre_usuario'] = $row['nombre_usuario'];
             
-//            echo var_dump($_SESSION['id_rol']);
+            echo var_dump($_SESSION['id_rol']);
             
             // Redirecciona al controlador de vistas
             require './ctlTipoVista.php';

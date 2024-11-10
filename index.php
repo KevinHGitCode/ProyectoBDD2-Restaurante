@@ -9,15 +9,12 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         
     </head>
-    <body 
-        class="bg-dark text-light"
-        >
+    <body>
         
         <?php
         
-        require_once './controlador/ctlTipoVista.php';
-        $ctv = new ctlTipoVista();
-        $ctv->mostrarVista();
+        header("Location: vista/pagina_principal/main.php");
+        exit();
         
         ?>
     </body>
