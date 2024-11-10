@@ -1,4 +1,5 @@
 <?php
+// Permite abrir la conexion a la base de datos
 class Database {
     private $servername = "b3f4tfoojx7qlecm12vn-mysql.services.clever-cloud.com";
     private $username = "uv1e8cvzidly8ssz";
