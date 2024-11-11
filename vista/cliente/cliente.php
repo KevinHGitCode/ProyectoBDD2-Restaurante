@@ -1,3 +1,9 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <!-- Vista para un usuario de tipo "cliente" -->
 <html>
@@ -11,9 +17,9 @@
     </head>
     <body>
         <?php
-        // Iniciar sesión (si aún no está iniciada)
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
+        if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol']!=1) {
+            header("Location: login.php"); // Redirige si no hay sesión
+            exit();
         }
         
         include './cliente-navbar.php';
