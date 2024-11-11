@@ -46,13 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['id_rol'] = $row['id_rol'];
             $_SESSION['nombre_usuario'] = $row['nombre_usuario'];
             
-            echo var_dump($_SESSION['id_rol']);
-            
             // Redirecciona al controlador de vistas
             require './ctlTipoVista.php';
             $ctv = new ctlTipoVista();
             $ctv->mostrarVista();
-            echo "Se inició sesión correctamente";
+            // echo "Se inició sesión correctamente";
         } else {
             echo "Contraseña incorrecta.";
         }

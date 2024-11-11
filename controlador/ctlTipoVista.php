@@ -4,7 +4,6 @@ class ctlTipoVista {
     // Método para mostrar la vista correcta según la sesión
     public function mostrarVista() {
         
-        echo var_dump($_SESSION['id_rol']);
         // Determinar la vista según el rol de usuario
         switch ($_SESSION['id_rol']) {
             case 1:  // cliente
