@@ -1,0 +1,5 @@
+.custom-card-body {
+    width: 300px; /* Ancho específico */
+    height: 245px; /* Altura específica */
+    align-items: center; /* Centra el contenido horizontalmente */
+}

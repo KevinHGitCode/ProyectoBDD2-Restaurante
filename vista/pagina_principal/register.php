@@ -1,7 +1,7 @@
 
 <!-- formulario de registro de clientes -->
 
-<div class="container w-50 mx-auto">
+<div class="container w-50 mx-auto" style="margin-top:3%;">
     <h1>Registro</h1>
     <!--<form action="register_process.php" method="POST">-->
     <form action="index.php?controlador=ctlAutenticacion&accion=registerUser" method="POST">

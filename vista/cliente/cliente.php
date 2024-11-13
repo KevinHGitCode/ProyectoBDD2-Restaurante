@@ -14,7 +14,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 
         <!-- Bootstrap CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        
+        <link rel="stylesheet" href="estilo.css">
     </head>
     <body>
         <?php
@@ -24,7 +24,7 @@ if (session_status() == PHP_SESSION_NONE) {
         }
         
         include './cliente-navbar.php';
-        echo '<h1>Bienvenido cliente con id: '.$_SESSION['id_usuario'].'</h1>';
+        include './menu.php';
         ?>
     
         <!-- jQuery, Popper.js, Bootstrap JS -->

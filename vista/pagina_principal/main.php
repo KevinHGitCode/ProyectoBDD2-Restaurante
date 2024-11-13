@@ -8,9 +8,16 @@
         
         <!-- Bootstrap CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        
+
+        <style>
+            .slogan { font-family: 'Monotype Corsiva Regular', sans-serif;}
+            h1 { font-family: 'Moof-Milker'; }
+            a { font-family: 'Leviosah'; }
+            .custom-hover:hover { color: #456aff; }
+        </style>
+
     </head>
-    <body>
+    <body class='bg-light'>
         <?php
         
         include './mainNavbar.php';

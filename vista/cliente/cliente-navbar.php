@@ -8,6 +8,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="cliente.php?view=menu">Menú</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="cliente.php?view=#">Mi orden</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="cliente.php?view=factura">Factura</a>
             </li>

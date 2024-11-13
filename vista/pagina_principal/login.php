@@ -1,7 +1,7 @@
 
 <!-- formulario de inicio de seccion -->
 
-<div class="container w-50 mx-auto">
+<div class="container w-50 mx-auto" style="margin-top:3%;">
     <h1>Iniciar Sesión</h1>
     <form action="../../controlador/ctlLogin.php" method="POST">
         <div class="form-group">
