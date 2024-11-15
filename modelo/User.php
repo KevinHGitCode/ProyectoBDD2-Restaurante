@@ -30,5 +30,116 @@ class User {
 
         $stmt->close();
     }
+  
+    
+    // Método para autenticar usuario
+public function authenticate($nombre_usuario, $password) {
+    // Preparar la consulta SQL
+    $stmt = $this->conn->prepare("SELECT id_usuario, nombre_usuario, contrasena FROM Usuarios WHERE nombre_usuario = ?");
+    $stmt->bind_param("s", $nombre_usuario);
+
+    // Ejecutar la consulta
+    if ($stmt->execute()) {
+        $stmt->store_result();
+        
+        // Verificar si existe un usuario con ese nombre de usuario
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($id_usuario, $nombre_usuario, $hashedPassword);
+            $stmt->fetch();
+            
+            // Verificar la contraseña
+            if (password_verify($password, $hashedPassword)) {
+            //if ($password == $hashedPassword) {
+                return [
+                    "id_usuario" => $id_usuario,
+                    "nombre_usuario" => $nombre_usuario
+                ];
+            }
+        }
+    }
+    
+    $stmt->close();
+    return false; // Credenciales incorrectas
 }
-?>
+
+
+// Método para actualizar contraseña
+public function updatePassword($id_usuario, $newPassword) {
+    // Encriptar la nueva contraseña
+    $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+
+    // Preparar la consulta SQL
+    $stmt = $this->conn->prepare("UPDATE Usuarios SET contrasena = ? WHERE id_usuario = ?");
+    $stmt->bind_param("si", $hashedPassword, $id_usuario);
+
+    // Ejecutar la consulta
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+
+    $stmt->close();
+}
+
+
+
+// Método para actualizar nombre de usuario
+public function updateUsername($id_usuario, $newUsername) {
+    // Preparar la consulta SQL
+    $stmt = $this->conn->prepare("UPDATE Usuarios SET nombre_usuario = ? WHERE id_usuario = ?");
+    $stmt->bind_param("si", $newUsername, $id_usuario);
+
+    // Ejecutar la consulta
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+
+    $stmt->close();
+}
+
+
+
+// Método para eliminar usuario
+public function deleteUser($id_usuario) {
+    // Preparar la consulta SQL
+    $stmt = $this->conn->prepare("DELETE FROM Usuarios WHERE id_usuario = ?");
+    $stmt->bind_param("i", $id_usuario);
+
+    // Ejecutar la consulta
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+
+    $stmt->close();
+}
+
+
+
+// Método para obtener datos de un usuario
+public function getUserData($id_usuario) {
+    // Preparar la consulta SQL
+    $stmt = $this->conn->prepare("SELECT id_usuario, nombre_usuario, email, id_rol FROM Usuarios WHERE id_usuario = ?");
+    $stmt->bind_param("i", $id_usuario);
+
+    // Ejecutar la consulta
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc(); // Retornar los datos del usuario
+        }
+    }
+    
+    $stmt->close();
+    return false; // Usuario no encontrado
+}
+
+
+
+
+}
