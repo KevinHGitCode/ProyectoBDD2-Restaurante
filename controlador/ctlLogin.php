@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         // contrasena123
         // Verifica que la contraseña coincide
-        if ($password == $row['contrasena']) { 
+        if (password_verify($password, $row['contrasena'])) {
 
             // Iniciar sesión (si aún no está iniciada)
             if (session_status() == PHP_SESSION_NONE) {
