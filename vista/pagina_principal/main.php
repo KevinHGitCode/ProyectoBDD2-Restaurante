@@ -10,10 +10,25 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
         <style>
-            .slogan { font-family: 'Monotype Corsiva Regular', sans-serif;}
-            h1 { font-family: 'Moof-Milker'; }
-            a { font-family: 'Leviosah'; }
-            .custom-hover:hover { color: #456aff; }
+        /* Cambiar el tamaño y estilo de los enlaces en la barra de navegación */
+        .navbar-nav .nav-link {
+            font-size: 1.2rem; /* Tamaño del texto */
+            color: #FAE3D9; /* Color del texto */
+            font-weight: bold; /* Texto en negrita */
+            font-family: 'Times New Roman', serif;
+            text-decoration: none; /* Sin subrayado */
+        }
+
+        /* Estilo adicional para el enlace activo */
+        .navbar-nav .nav-item.active .nav-link {
+            color: #D4A59A; /* Color específico para el enlace activo */
+        }
+
+        /* Estilo para el hover (al pasar el cursor) */
+        .navbar-nav .nav-link:hover {
+            color: #D4A59A; /* Cambia el color al pasar el cursor */
+            text-decoration: underline; /* Opcional: subrayado al pasar el cursor */
+        }
         </style>
 
     </head>
