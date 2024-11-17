@@ -1,6 +1,6 @@
 <?php
 
-class ctlAutenticacion {
+class ctlPaginaPrincipal {
     // Método principal para controlar las vistas
     public function mostrarVista() {
         // Verificar si el parámetro 'view' está definido en la URL

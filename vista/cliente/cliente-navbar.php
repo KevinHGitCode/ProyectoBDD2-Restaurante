@@ -15,7 +15,7 @@
                 <a class="nav-link" href="cliente.php?view=factura">Factura</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="cliente.php?view=logout">Cerrar sesión</a>
+                <a class="nav-link" href="../../controlador/ctlLogout.php">Cerrar sesión</a>
             </li>
         </ul>
     </div>

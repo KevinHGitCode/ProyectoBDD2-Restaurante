@@ -38,10 +38,10 @@
         include './mainNavbar.php';
         
         // Incluir el archivo del controlador
-        require_once '../../controlador/ctlAutenticacion.php';
+        require_once '../../controlador/ctlPaginaPrincipal.php';
 
         // Crear una instancia del controlador
-        $ctlAutenticacion = new ctlAutenticacion();
+        $ctlAutenticacion = new ctlPaginaPrincipal();
 
         // Llamar al método para mostrar la vista
         $ctlAutenticacion->mostrarVista();

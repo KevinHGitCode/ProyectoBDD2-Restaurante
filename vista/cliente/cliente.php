@@ -19,7 +19,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <body>
         <?php
         if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol']!=1) {
-            header("Location: login.php"); // Redirige si no hay sesión
+            header("Location: ../pagina_principal/main.php"); // Redirige si no hay sesión
             exit();
         }
         

@@ -1,6 +1,6 @@
 <?php
 
-class ctlTipoVista {
+class ctlRolVista {
     // Método para mostrar la vista correcta según la sesión
     public function mostrarVista() {
         
