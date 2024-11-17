@@ -1,3 +1,9 @@
-Acerca de los archivos README
+PROYECTO RESTAURANTE KARLITA AÑO 2024
+UNIVERSIDAD DE LA GUAJIRA
 
-**Puedes agregar un archivo README a un repositorio para comunicar información importante sobre tu proyecto.** Un archivo LÉAME, junto con una licencia de repositorio, un archivo de cita, instrucciones de contribución y un código de conducta, comunica las expectativas de tu proyecto y te ayuda a administrar las contribuciones.
+GRUPO: KARLA LASCANO
+       KEVIN DIAZ
+       LUIS ZAPATA
+       MARIA MARQUEZ
+       RAFAEL PANA
+![image](https://github.com/user-attachments/assets/8b61b579-2324-4af5-857d-4860cc4a15aa)
