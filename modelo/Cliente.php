@@ -1,5 +1,5 @@
 <?php
-require_once 'config/db.php';
+require_once '../../config/db.php';
 
 class Cliente {
     private $conn;
@@ -11,7 +11,8 @@ class Cliente {
 
     // Obtener productos por categoría
     public function obtenerMenuPorCategoria($categoria) {
-        $stmt = $this->conn->prepare("SELECT id_producto, nom_producto, precio 
+        // agrege descripcion y link_img
+        $stmt = $this->conn->prepare("SELECT id_producto, nom_producto, precio, descripcion, link_img 
                                         FROM Productos p join Categorias c on p.id_categoria = c.id_categoria
                                         WHERE c.nom_categoria = ?");
         $stmt->bind_param("s", $categoria);

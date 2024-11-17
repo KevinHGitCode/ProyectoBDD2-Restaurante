@@ -15,6 +15,12 @@ if (session_status() == PHP_SESSION_NONE) {
         <!-- Bootstrap CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="estilo.css">
+
+        <style>
+        .custom-card-body {
+            text-align: center;
+        }
+    </style>
     </head>
     <body>
         <?php
