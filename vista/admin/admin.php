@@ -58,6 +58,11 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 <h1 class="h2">Bienvenido, Administrador</h1>
                 <p>Seleccione una de las opciones del menú para comenzar.</p>
+                CRUD Usuarios<br>
+                CRUD Ingredientes<br>
+                CRUD Categoria<br>
+                CRUD Productos<br>
+                Reportes de Facturas, Productos, Clientes<br>
                 <!-- Aquí podrías añadir más contenido específico para cada sección -->
             </main>
         </div>
