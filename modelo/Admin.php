@@ -11,7 +11,6 @@ class Admin {
 
     /** CRUD Usuarios **/
     public function crearUsuario($nombre_usuario, $email, $contrasena, $id_rol) {
-        // Verificar si el email ya existe
         $stmt = $this->conn->prepare("SELECT COUNT(*) FROM Usuarios WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -20,17 +19,14 @@ class Admin {
         $stmt->close();
     
         if ($count > 0) {
-            // Si el email ya existe, devolver un error o mensaje
             return "El email ya está registrado.";
         }
     
-        // Si el email no existe, insertar el nuevo usuario
         $hashedPassword = password_hash($contrasena, PASSWORD_BCRYPT);
         $stmt = $this->conn->prepare("INSERT INTO Usuarios (nombre_usuario, email, contrasena, id_rol) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("sssi", $nombre_usuario, $email, $hashedPassword, $id_rol);
         return $stmt->execute();
     }
-    
 
     public function obtenerUsuarios() {
         $result = $this->conn->query("SELECT id_usuario, nombre_usuario, email, r.id_rol, r.nombre_rol
@@ -40,20 +36,16 @@ class Admin {
 
     public function obtenerUsuarioPorId($id) {
         $stmt = $this->conn->prepare("SELECT * FROM Usuarios WHERE id_usuario = ?");
-        $stmt->bind_param("i", $id); // "i" para indicar que $id es un entero
+        $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
         
-        // Verificar si se encontró un usuario
         if ($result->num_rows > 0) {
-            // Devuelve un solo usuario como un array asociativo
             return $result->fetch_assoc();
         } else {
-            // Si no se encuentra un usuario con ese ID, devolver un mensaje
             return "Usuario no encontrado.";
         }
     }
-    
 
     public function actualizarUsuario($id_usuario, $nombre_usuario, $email, $id_rol) {
         $stmt = $this->conn->prepare("UPDATE Usuarios SET nombre_usuario = ?, email = ?, id_rol = ? WHERE id_usuario = ?");
@@ -67,6 +59,17 @@ class Admin {
         return $stmt->execute();
     }
 
+    public function buscarUsuarios($termino) {
+        $termino = "%$termino%";
+        $stmt = $this->conn->prepare("SELECT id_usuario, nombre_usuario, email, r.id_rol, r.nombre_rol
+                                       FROM Usuarios u
+                                       JOIN Roles r ON u.id_rol = r.id_rol
+                                       WHERE nombre_usuario LIKE ? OR email LIKE ?");
+        $stmt->bind_param("ss", $termino, $termino);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     /** CRUD Ingredientes **/
     public function crearIngrediente($nom_ingrediente, $disponibilidad) {
         $stmt = $this->conn->prepare("INSERT INTO Ingredientes (nom_ingrediente, disponibilidad) VALUES (?, ?, ?)");

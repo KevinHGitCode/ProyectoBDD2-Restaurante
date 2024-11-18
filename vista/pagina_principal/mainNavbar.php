@@ -9,19 +9,29 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link font-weight-bold" href="main.php?view=home" style="color: #FAE3D9;">Inicio</a>
+                    <a class="nav-link font-weight-bold" 
+                    href="main.php?view=home" 
+                    style="color: #FAE3D9;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="main.php?view=contact" style="color: #FAE3D9;">Contacto</a>
+                    <a class="nav-link font-weight-bold" 
+                    href="main.php?view=contact" 
+                    style="color: #FAE3D9;">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="main.php?view=about" style="color: #FAE3D9">Nosotros</a>
+                    <a class="nav-link font-weight-bold" 
+                    href="main.php?view=about" 
+                    style="color: #FAE3D9">Nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="main.php?view=login" style="color: #FAE3D9">Iniciar Sesión</a>
+                    <a class="nav-link font-weight-bold" 
+                    href="main.php?view=login" 
+                    style="color: #FAE3D9">Iniciar Sesión</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="main.php?view=register" style="color: #FAE3D9">Registrarse</a>
+                    <a class="nav-link font-weight-bold" 
+                    href="main.php?view=register"
+                    style="color: #FAE3D9">Registrarse</a>
                 </li>
             </ul>
         </div>
