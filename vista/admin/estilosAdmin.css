@@ -1,0 +1,112 @@
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    padding-top: 20px;
+}
+
+.content {
+    margin-left: 18rem; /* Espacio para el sidebar */
+}
+
+/* Estilo para las opciones del sidebar */
+.sidebar a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #343a40; /* Fondo oscuro para las secciones */
+    border: 2px solid transparent;
+}
+
+/* Estilo al pasar el cursor */
+.sidebar a:hover {
+    color: white;
+    background-color: #007bff; /* Azul Bootstrap */
+    border-color: #ced4da; /* Gris claro para el borde */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Sutil sombra azul */
+    font-size: 1.1rem;
+}
+
+/* Estilo para el "Cerrar Sesión" */
+.logout-container {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 10;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo gris oscuro transparente */
+}
+
+.logout {
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.logout:hover, .logout:focus {
+    background-color: #e74c3c; /* Rojo suave */
+    color: white;
+    font-size: 1.1rem;
+}
+
+/* Estilo para el submenú de Reportes */
+.collapse {
+    display: none;
+}
+
+.collapse.show {
+    display: block;
+    position: relative;
+    left: 0; /* No sobresalir fuera del área */
+    margin-top: 0;
+    padding-left: 20px; /* Separación de las subopciones */
+    background-color: #343a40; /* Fondo oscuro */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-item {
+    margin-bottom: 10px; /* Separación entre las secciones principales */
+}
+
+.nav-item .nav-link {
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #343a40;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-item .nav-link:hover {
+    background-color: #007bff;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Sombra azul */
+}
+
+/* Estilo para las subopciones de "Reportes" */
+.nav-item .nav-link-sub {
+    padding: 10px 15px;
+    color: white;
+    font-weight: normal;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-item .nav-link-sub:hover {
+    background-color: #48C9B0; /* Azul turquesa */
+    font-size: 1.1rem;
+}

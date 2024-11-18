@@ -2,11 +2,11 @@
 
 include "../modelo/User.php";
 
-$model = new User();
+$user = new User();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $result = $model->authenticate($_POST['username'], $_POST['password']);
+    $result = $user->authenticate($_POST['username'], $_POST['password']);
 
     if (is_array($result)) {
         // Iniciar sesión (si aún no está iniciada)

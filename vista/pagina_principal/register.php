@@ -15,7 +15,7 @@
      style="margin-top:3%; font-family: 'Times New Roman'; color: #D4A59A;">
     <h1 style="color: #FAE3D9;">Registro</h1>
     <!--<form action="register_process.php" method="POST">-->
-    <form action="index.php?controlador=ctlAutenticacion&accion=registerUser" method="POST">
+    <form action="../../controlador/ctlRegistroCliente.php" method="POST">
         <div class="form-group">
             <label for="username">Nombre de Usuario:</label>
             <input type="text" class="form-control" 
