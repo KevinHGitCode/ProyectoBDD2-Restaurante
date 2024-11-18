@@ -33,7 +33,13 @@
 
     </head>
     <body class='bg-light'>
-        <?php
+    <script>
+        // Si hay un mensaje en PHP, mostrarlo con la clase Mensaje
+        <?php if ($mensaje): ?>
+            Mensaje.mostrar(<?= $mensaje['exito'] ? 'true' : 'false' ?>, "<?= $mensaje['texto'] ?>");
+        <?php endif; ?>
+    </script>
+        <!-- 
         
         include './mainNavbar.php';
         
@@ -46,7 +52,7 @@
         // Llamar al método para mostrar la vista
         $ctlAutenticacion->mostrarVista();
    
-        ?>
+        ?> -->
         <!-- jQuery, Popper.js, Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
