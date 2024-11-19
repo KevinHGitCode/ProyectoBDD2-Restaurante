@@ -217,7 +217,41 @@ class Cliente {
             return false;  // No se pudo procesar el pago
         }
     }
-    
+
+    // Consultar los detalles de una orden específica
+    public function obtenerDetallesOrden($id_pedido) {
+        $stmt = $this->conn->prepare(
+            "SELECT p.id_producto, p.nom_producto, pp.cantidad, p.precio, 
+                    (pp.cantidad * p.precio) AS subtotal
+            FROM Personalizaciones_pedidos pp
+            JOIN Productos p ON pp.id_producto = p.id_producto
+            WHERE pp.id_pedido = ?"
+        );
+        $stmt->bind_param("i", $id_pedido);
+
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $detallesOrden = [];
+            $total = 0;
+
+            while ($row = $result->fetch_assoc()) {
+                $detallesOrden[] = $row;
+                $total += $row['subtotal']; // Calcular el total general
+            }
+
+            $stmt->close();
+
+            // Agregar el total general al resultado
+            return [
+                'productos' => $detallesOrden,
+                'total' => $total
+            ];
+        }
+
+        $stmt->close();
+        return false; // Si la consulta falla
+    }
+
 
 
 
