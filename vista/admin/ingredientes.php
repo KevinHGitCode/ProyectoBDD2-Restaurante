@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__.'/../../controlador/Admin/ctlIngredientes.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
