@@ -20,7 +20,7 @@
             </li>
             <li class="nav-item">
                 <a  class="nav-link" 
-                    href="cliente.php?view=factura"
+                    href="facturaCliente.php"
                     style="color: #FAE3D9; font-family: 'Times New Roman';">Factura</a>
             </li>
             <li class="nav-item">

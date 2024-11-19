@@ -22,25 +22,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="?page=ingredientes">Ingredientes</a>
                     </li>
-                    <!-- Submenú para Reportes -->
-                    <li class="nav-item">
-                        <a class="nav-link text-white" data-toggle="collapse" href="#reportesMenu" role="button" aria-expanded="false" aria-controls="reportesMenu">
-                            Reportes
-                        </a>
-                        <div class="collapse" id="reportesMenu">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link-sub text-white" href="?page=reportes_facturas">Facturas</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-sub text-white" href="?page=reportes_productos">Productos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-sub text-white" href="?page=reportes_clientes">Clientes</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    
                     <!-- Cerrar sesión -->
                     <li class="nav-item">
                         <a class="nav-link text-white logout" href="../../controlador/ctlLogout.php">Cerrar Sesión</a>
