@@ -1,3 +1,10 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +20,13 @@
 
 <body>
     
-    <?php include './admin-sidebar.php';?>
+    <?php
+    if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol']!=3) {
+        header("Location: ../pagina_principal/main.php"); // Redirige si no hay sesión
+        exit();
+    }
+
+    include './admin-sidebar.php';?>
 
     <!-- Main content -->
     <main role="main" class="content col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">

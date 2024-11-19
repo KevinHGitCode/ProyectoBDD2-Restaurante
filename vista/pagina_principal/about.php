@@ -16,10 +16,9 @@
 <div class="container-fluid d-flex justify-content-center align-items-center" 
      style="height: 80vh; font-family: 'Georgia'; font-size: 1.2rem; color: #FAE3D9;">
     <div class="text-center p-4 border rounded shadow-sm content-div">
-        <h2 class="font-weight-bold mb-3" style="color: #FAE3D9">Nosotros</h2>
-        <p class="mb-3">En nuestro restaurante, nos dedicamos a ofrecerte una experiencia gastronómica única, con un menú variado y un ambiente acogedor.</p>
-        <p class="mb-3">Nuestro equipo de chefs y personal está comprometido con la calidad y el servicio para brindarte una experiencia memorable en cada visita.</p>
-        <p><strong>Misión:</strong> Ofrecer platos deliciosos utilizando ingredientes frescos y de alta calidad en un ambiente amigable y acogedor.</p>
-        <p><strong>Visión:</strong> Convertirnos en el restaurante preferido de nuestra comunidad, creando momentos inolvidables para nuestros clientes.</p>
-    </div>
+        <h3><strong>Misión:</strong></h3>
+        <p> Ofrecer una experiencia culinaria excepcional, combinando platos de alta calidad con un sistema de gestión digital avanzado que optimiza el proceso de pedidos y atención al cliente. A través de tablets en mesas y una plataforma para pedidos a domicilio, garantizamos precisión, rapidez y personalización en el servicio, contribuyendo a la satisfacción de nuestros clientes y al crecimiento sostenible del restaurante.</p>
+        <h3><strong>Visión:</strong> </h3>
+        <p> Convertirnos en el restaurante líder en innovación tecnológica y calidad de servicio en la región, proporcionando a nuestros clientes una experiencia gastronómica única, eficiente y personalizada, tanto en nuestro establecimiento como en el servicio a domicilio. Aspiramos a ser un referente de modernización en el sector gastronómico, integrando tecnología y excelencia en cada aspecto de nuestra operación.</p>
+    </div>
 </div>

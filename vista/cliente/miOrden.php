@@ -71,5 +71,77 @@ $estadoOrden = $controlador->obtenerEstadoOrden($id_pedido);
             </tfoot>
         </table>
     </div>
+
+    </br>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Formulario de Envio</h2>
+        <form action="controlador.php" method="POST">
+            <!-- Nombre del cliente -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre del Cliente</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa el nombre" required>
+            </div>
+
+            <!-- Tipo de pedido -->
+            <div class="mb-3">
+                <label class="form-label">Tipo de Pedido</label>
+                <select class="form-select" id="tipo_pedido" name="tipo_pedido" onchange="mostrarCampos()" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="mesa">En mesa</option>
+                    <option value="domicilio">A domicilio</option>
+                </select>
+            </div>
+
+            <!-- Número de mesa (solo si es en mesa) -->
+            <div class="mb-3 d-none" id="campo_mesa">
+                <label for="numero_mesa" class="form-label">Número de Mesa</label>
+                <input type="number" class="form-control" id="numero_mesa" name="numero_mesa" placeholder="Ingresa el número de mesa">
+            </div>
+
+            <!-- Dirección de entrega y tipo de pago (solo si es a domicilio) -->
+            <div id="campo_domicilio" class="d-none">
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección de Entrega</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingresa la dirección">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tipo de Pago</label>
+                    <select class="form-select" id="tipo_pago" name="tipo_pago">
+                        <option value="">Selecciona una opción</option>
+                        <option value="tarjeta">Tarjeta</option>
+                        <option value="efectivo">Efectivo</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Botón enviar -->
+            <button type="submit" class="btn btn-primary">Enviar Pedido</button>
+        </form>
+    </div>
+
+    <script>
+        function mostrarCampos() {
+            const tipoPedido = document.getElementById('tipo_pedido').value;
+            const campoMesa = document.getElementById('campo_mesa');
+            const campoDomicilio = document.getElementById('campo_domicilio');
+
+            // Mostrar/ocultar campos según el tipo de pedido
+            if (tipoPedido === 'mesa') {
+                campoMesa.classList.remove('d-none');
+                campoDomicilio.classList.add('d-none');
+            } else if (tipoPedido === 'domicilio') {
+                campoMesa.classList.add('d-none');
+                campoDomicilio.classList.remove('d-none');
+            } else {
+                campoMesa.classList.add('d-none');
+                campoDomicilio.classList.add('d-none');
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>
