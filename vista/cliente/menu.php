@@ -10,14 +10,14 @@ $categorias = obtenerMenuOrganizadoPorCategoria();
     body {
         background-color: #FAF3E0; /* Fondo crema suave */
         color: #2A6041; /* Color del texto general */
-    }
+    }
 </style>
 
 <style>
     .titulo-categoria {
         color: #2A6041; /* Verde bosque */
         font-weight: bold; /* Hace que el texto sea más destacado */
-    }
+    }
 </style>
 
 <body>

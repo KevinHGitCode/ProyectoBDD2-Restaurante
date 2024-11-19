@@ -8,7 +8,7 @@
         background-position: center;
         background-repeat: no-repeat;
         height: 100vh;
-    }
+    }
 </style>
 
 <div class="container w-50 mx-auto" 

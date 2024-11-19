@@ -1,6 +1,12 @@
 <?php
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once '../../controlador/ctlChef.php';
 $ordenes = obtenerOrdenesPendientes();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +20,7 @@ $ordenes = obtenerOrdenesPendientes();
 
 
         <?php 
-        if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol']!=2) {
+        if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
             header("Location: ../pagina_principal/main.php"); // Redirige si no hay sesión
             exit();
         }
