@@ -70,21 +70,23 @@ class Admin {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+
     /** CRUD Ingredientes **/
     public function crearIngrediente($nom_ingrediente, $disponibilidad) {
-        $stmt = $this->conn->prepare("INSERT INTO Ingredientes (nom_ingrediente, disponibilidad) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssi", $nom_ingrediente, $disponibilidad);
+        $stmt = $this->conn->prepare("INSERT INTO Ingredientes (nom_ingrediente, disponibilidad) VALUES (?, ?)");
+        $stmt->bind_param("si", $nom_ingrediente, $disponibilidad);
         return $stmt->execute();
     }
 
     public function obtenerIngredientes() {
-        $result = $this->conn->query("SELECT * FROM Ingredientes");
+        $result = $this->conn->query("SELECT id_ingrediente, nom_ingrediente, disponibilidad FROM Ingredientes");
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function actualizarIngrediente($id_ingrediente, $nombre, $estado, $stock) {
-        $stmt = $this->conn->prepare("UPDATE Ingredientes SET nombre = ?, estado = ?, stock = ? WHERE id_ingrediente = ?");
-        $stmt->bind_param("ssii", $nombre, $estado, $stock, $id_ingrediente);
+    public function actualizarIngrediente($id_ingrediente, $nombre, $disponibilidad) {
+        $stmt = $this->conn->prepare("UPDATE Ingredientes SET nom_ingrediente = ?, disponibilidad = ? WHERE id_ingrediente = ?");
+        $stmt->bind_param("sii", $nombre, $disponibilidad, $id_ingrediente);
         return $stmt->execute();
     }
 
@@ -96,7 +98,7 @@ class Admin {
 
     /** CRUD Categoría **/
     public function crearCategoria($nombre_categoria) {
-        $stmt = $this->conn->prepare("INSERT INTO Categorias (nombre_categoria) VALUES (?)");
+        $stmt = $this->conn->prepare("INSERT INTO Categorias (nom_categoria) VALUES (?)");
         $stmt->bind_param("s", $nombre_categoria);
         return $stmt->execute();
     }
@@ -107,7 +109,7 @@ class Admin {
     }
 
     public function actualizarCategoria($id_categoria, $nombre_categoria) {
-        $stmt = $this->conn->prepare("UPDATE Categorias SET nombre_categoria = ? WHERE id_categoria = ?");
+        $stmt = $this->conn->prepare("UPDATE Categorias SET nom_categoria = ? WHERE id_categoria = ?");
         $stmt->bind_param("si", $nombre_categoria, $id_categoria);
         return $stmt->execute();
     }
@@ -119,9 +121,9 @@ class Admin {
     }
 
     /** CRUD Productos **/
-    public function crearProducto($nombre_producto, $precio, $id_categoria) {
-        $stmt = $this->conn->prepare("INSERT INTO Productos (nombre_producto, precio, id_categoria) VALUES (?, ?, ?)");
-        $stmt->bind_param("sdi", $nombre_producto, $precio, $id_categoria);
+    public function crearProducto($nombre_producto, $precio, $id_categoria, $img) {
+        $stmt = $this->conn->prepare("INSERT INTO Productos (nom_producto, precio, id_categoria, link_img) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sdis", $nombre_producto, $precio, $id_categoria, $img);
         return $stmt->execute();
     }
 
@@ -130,11 +132,14 @@ class Admin {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function actualizarProducto($id_producto, $nombre_producto, $precio, $id_categoria) {
-        $stmt = $this->conn->prepare("UPDATE Productos SET nombre_producto = ?, precio = ?, id_categoria = ? WHERE id_producto = ?");
-        $stmt->bind_param("sdii", $nombre_producto, $precio, $id_categoria, $id_producto);
+    public function actualizarProducto($id_producto, $nombre_producto, $descripcion, $precio, $img, $id_categoria) {
+        $stmt = $this->conn->prepare("UPDATE Productos SET nom_producto = ?, 
+                                        descripcion = ?, precio = ?, link_img = ?, id_categoria = ? 
+                                        WHERE id_producto = ?");
+        // Corrigiendo el orden de los tipos y valores en bind_param
+        $stmt->bind_param("ssdsii", $nombre_producto, $descripcion, $precio, $img, $id_categoria, $id_producto);
         return $stmt->execute();
-    }
+    }    
 
     public function eliminarProducto($id_producto) {
         $stmt = $this->conn->prepare("DELETE FROM Productos WHERE id_producto = ?");
@@ -154,10 +159,10 @@ class Admin {
 
     public function generarReporteProductos() {
         $result = $this->conn->query("
-            SELECT p.nombre_producto, SUM(d.cantidad) as total_vendido
+            SELECT p.nom_producto, SUM(d.cantidad) as total_vendido
             FROM DetallesOrden d
             JOIN Productos p ON d.id_producto = p.id_producto
-            GROUP BY p.nombre_producto
+            GROUP BY p.nom_producto
         ");
         return $result->fetch_all(MYSQLI_ASSOC);
     }
@@ -173,4 +178,3 @@ class Admin {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
-
