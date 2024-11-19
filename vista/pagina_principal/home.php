@@ -18,5 +18,5 @@
            style="background-color: #2A6041; color: #FAE3D9; font-family: 'Georgia', sans-serif;">
             Ingresar
         </a>
-    </div>
+    </div>
 </div>

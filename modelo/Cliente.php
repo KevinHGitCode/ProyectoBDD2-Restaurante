@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/db.php';
+require_once __DIR__ . '/../config/db.php';  // Ruta absoluta basada en la ubicación actual del archivo
 
 class Cliente {
     private $conn;
@@ -7,6 +7,25 @@ class Cliente {
     public function __construct() {
         $database = new Database();
         $this->conn = $database->connect();
+    }
+
+    public function obtenerIdCliente($idUsuario) {
+        $stmt = $this->conn->prepare(
+            "SELECT c.id_cliente FROM Cliente c Join Usuarios u
+                on c.id_usuario = u.id_usuario
+                where c.id_usuario = ?;"
+        );
+        $stmt->bind_param("i", $idUsuario);
+
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                return $result->fetch_assoc()['id_cliente']; // Retorna el id_cliente asociado
+            }
+        }
+
+        $stmt->close();
+        return false; // Si no se encuentra el id_cliente
     }
 
     // Obtener productos por categoría
@@ -32,37 +51,54 @@ class Cliente {
     }
 
 
-    // Realizar un pedido
-    public function realizarOrden($id_cliente, $productos, $id_mesa = null) {
-        $this->conn->begin_transaction();
+    public function crearPedido($id_cliente, $id_mesa = null) {
         try {
-            // Insertar en la tabla Pedidos
             $stmt = $this->conn->prepare("INSERT INTO Pedidos (id_cliente, id_mesa, fecha_hora, estado) 
-                                        VALUES (?, ?, NOW(), 'En Cola')");
+                                          VALUES (?, ?, NOW(), 'En cola')");
             $stmt->bind_param("ii", $id_cliente, $id_mesa); // Ajusta los tipos según corresponda
             $stmt->execute();
             $id_pedido = $this->conn->insert_id; // Obtener el ID del nuevo pedido
-
-            // Insertar los detalles del pedido
-            foreach ($productos as $producto) {
-                $stmtDetalle = $this->conn->prepare("INSERT INTO Personalizaciones_pedidos (id_pedido, id_producto, accion) 
-                                                    VALUES (?, ?, ?)");
-                $stmtDetalle->bind_param("iis", $id_pedido, $producto['id_producto'], $producto['accion']);
-                $stmtDetalle->execute();
-                $stmtDetalle->close();
-            }
-
-            $this->conn->commit();
-            return $id_pedido; // Retorna el ID del pedido creado
+            $stmt->close();
+            return $id_pedido;
         } catch (Exception $e) {
-            // Mostrar mensaje de error con detalles
-            error_log("Error al realizar el pedido: " . $e->getMessage()); // Loguea el error
-            echo "Error al realizar el pedido. Detalles: " . $e->getMessage(); // Muestra el error al usuario
-
-            $this->conn->rollback();
+            error_log("Error al crear el pedido: " . $e->getMessage());
+            echo "Error al crear el pedido. Detalles: " . $e->getMessage();
             return false;
         }
     }
+
+    public function agregarProductosAPedido($id_pedido, $productos) {
+        try {
+            foreach ($productos as $producto) {
+                $stmt = $this->conn->prepare("INSERT INTO Personalizaciones_pedidos (id_pedido, id_producto, accion) 
+                                              VALUES (?, ?, ?)");
+                $stmt->bind_param("iis", $id_pedido, $producto['id_producto'], $producto['accion']);
+                $stmt->execute();
+                $stmt->close();
+            }
+            return true;
+        } catch (Exception $e) {
+            error_log("Error al agregar productos al pedido: " . $e->getMessage());
+            echo "Error al agregar productos al pedido. Detalles: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function finalizarPedido($id_pedido) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE Pedidos SET estado = 'En Cola' WHERE id_pedido = ?");
+            $stmt->bind_param("i", $id_pedido);
+            $stmt->execute();
+            $stmt->close();
+    
+            return true;
+        } catch (Exception $e) {
+            error_log("Error al finalizar el pedido: " . $e->getMessage());
+            echo "Error al finalizar el pedido. Detalles: " . $e->getMessage();
+            return false;
+        }
+    }
+    
 
 
     // Consultar estado de la orden
