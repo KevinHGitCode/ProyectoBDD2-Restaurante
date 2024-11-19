@@ -5,7 +5,7 @@ function obtenerMenuOrganizadoPorCategoria() {
     $cliente = new Cliente();
 
     // Definir las categorías esperadas
-    $categorias = ['Entradas', 'Platos Principales', 'Postres', 'Bebidas', 'Aperitivos'];
+    $categorias = ['Entradas', 'Platos Principales', 'Postres', 'Bebidas'];
 
     $menu = [];
     foreach ($categorias as $categoria) {
