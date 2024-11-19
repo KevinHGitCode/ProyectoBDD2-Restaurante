@@ -3,7 +3,7 @@ require_once __DIR__.'/../../controlador/Admin/ctlIngredientes.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,13 @@ require_once __DIR__.'/../../controlador/Admin/ctlIngredientes.php';
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Gestión de Ingredientes</h1>
+
+        <!-- Mostrar mensajes -->
+        <?php if (isset($_GET['mensaje'])): ?>
+            <div class="alert alert-success"><?= htmlspecialchars($_GET['mensaje']) ?></div>
+        <?php elseif (isset($_GET['error'])): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($_GET['error']) ?></div>
+        <?php endif; ?>
 
         <!-- Formulario para crear un nuevo ingrediente -->
         <div class="card mb-4">
@@ -51,32 +58,6 @@ require_once __DIR__.'/../../controlador/Admin/ctlIngredientes.php';
             </thead>
             <tbody>
                 <?php
-                // Ingredientes predefinidos
-                $ingredientes = [
-                    ['id_ingrediente' => 1, 'nom_ingrediente' => 'Carne de Res', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 2, 'nom_ingrediente' => 'Pan', 'disponibilidad' => 0],
-                    ['id_ingrediente' => 3, 'nom_ingrediente' => 'Lechuga', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 4, 'nom_ingrediente' => 'Tomate', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 5, 'nom_ingrediente' => 'Queso Mozzarella', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 6, 'nom_ingrediente' => 'Salsa Especial', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 7, 'nom_ingrediente' => 'Salsa de Tomate', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 8, 'nom_ingrediente' => 'Albahaca', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 9, 'nom_ingrediente' => 'Pollo', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 10, 'nom_ingrediente' => 'Tortilla de Maíz', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 11, 'nom_ingrediente' => 'Guacamole', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 12, 'nom_ingrediente' => 'Crutones', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 13, 'nom_ingrediente' => 'Queso Parmesano', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 14, 'nom_ingrediente' => 'Aderezo César', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 15, 'nom_ingrediente' => 'Pavo', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 16, 'nom_ingrediente' => 'Pasta', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 17, 'nom_ingrediente' => 'Salsa Alfredo', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 18, 'nom_ingrediente' => 'Mango', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 19, 'nom_ingrediente' => 'Café', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 20, 'nom_ingrediente' => 'Leche', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 21, 'nom_ingrediente' => 'Helado de Vainilla', 'disponibilidad' => 1],
-                    ['id_ingrediente' => 22, 'nom_ingrediente' => 'Brownie', 'disponibilidad' => 1],
-                ];
-
                 foreach ($ingredientes as $ingrediente) {
                     $toggleClass = $ingrediente['disponibilidad'] ? 'btn-success' : 'btn-secondary';
                     $toggleText = $ingrediente['disponibilidad'] ? 'Disponible' : 'No Disponible';

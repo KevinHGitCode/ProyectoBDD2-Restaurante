@@ -15,7 +15,7 @@
             </li>
             <li class="nav-item active">
                 <a  class="nav-link" 
-                    href="cliente.php?view=#"
+                    href="miOrden.php"
                     style="color: #FAE3D9; font-family: 'Times New Roman';">Mi orden</a>
             </li>
             <li class="nav-item">
